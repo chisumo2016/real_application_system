@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Post;
 class PostsController extends Controller
 {
     /**
@@ -35,7 +36,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
         //dd($request->all());
 
         $this->validate($request, [
@@ -46,7 +47,23 @@ class PostsController extends Controller
             'category_id'   =>  'required'
         ]);
 
-        dd($request->all());
+        //Store  post and image into the database
+        $featured = $request->featured;
+
+        //Give a new name
+        $featured_new_name = time().$featured->getClientOriginalName(); //Symphony name
+        //Moving the image into the folder and pass to the name of the file
+        $featured->move('uploads/posts',$featured_new_name );
+
+        // Taking care for other fields
+        $post = Post::Create([
+            'title'         =>  $request->title,
+            'content'       =>  $request->content,
+            'featured'      =>  'uploads/posts/' . $featured_new_name,
+            'category_id'   =>  $request->category_id
+        ]);
+
+        Session::flash('success', 'Post created successfully');
     }
 
     /**
