@@ -1,22 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.partials.errors')
+
+  @include('admin.partials.errors')
+
     <div class="panel panel-default">
         <div class="panel-heading">
-            Create a new category
+           Update Category: {{ $category->name }}
         </div>
         <div class="panel-body">
-            <form action="{{ route('categories.store') }}" method="post">
+            <form action="{{ route('category.update',['id'=>$category->id]) }}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name">Name Of Category :</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="name" value=" {{ $category->name }}" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <div class="text-center">
-                        <button class="btn btn-success" type="submit">Store Category</button>
+                        <button class="btn btn-success" type="submit">Update Category</button>
                     </div>
                 </div>
             </form>
