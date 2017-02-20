@@ -91,6 +91,11 @@
 
                             <li class="list-group-item">
 
+                                <a href="{{ route('posts') }}">View All Post</a>
+                            </li>
+
+                            <li class="list-group-item">
+
                                 <a href="{{ route('post.create') }}">Create New Post</a>
                             </li>
                             <li class="list-group-item">
