@@ -20,7 +20,7 @@
                         <td> <a href="" class="btn  btn-info">Edit</a></td>
 
                         <td> <a href="{{ route('post.delete',['id' => $post->id]) }}" class="btn  btn-success">Restore</a></td>
-                        <td> <a href="{{ route('post.delete',['id' => $post->id]) }}" class="btn  btn-danger">Restore</a></td>
+                        <td> <a href="{{ route('posts.kill',   ['id' => $post->id]) }}" class="btn  btn-danger">Delete</a></td>
                     </tr>
                 @endforeach
 
