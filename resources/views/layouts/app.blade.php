@@ -89,6 +89,12 @@
                                 <a href="{{ Route('home') }}">Home</a>
                             </li>
 
+
+                            <li class="list-group-item">
+
+                                <a href="{{ route('posts.trashed') }}">View All Trashed Post</a>
+                            </li>
+
                             <li class="list-group-item">
 
                                 <a href="{{ route('posts') }}">View All Post</a>
@@ -106,6 +112,9 @@
                             <li class="list-group-item">
                                 <a href="{{ Route('category.create') }}">Create New Category</a>
                             </li>
+
+
+
                         </ul>
                     </div>
                     @endif

@@ -127,4 +127,11 @@ class PostsController extends Controller
         Session::flash('success', 'The post was just trashed');
         return redirect()->back();
     }
+
+    public function trashed()
+    {
+        $post = Post::onlyTrashed()->get();
+        return view('admin.posts.trashed')->with('posts',$post);
+        dd($post);
+    }
 }
