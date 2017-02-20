@@ -21,4 +21,12 @@ class Post extends Model
    {
        return $this->belongsTo('App\Category');
    }
+
+   //Accessors for image
+
+    public function getFeaturedAttribute($featured)
+    {
+        return asset($featured);   // Will generate a link for accesors
+    }
+
 }
