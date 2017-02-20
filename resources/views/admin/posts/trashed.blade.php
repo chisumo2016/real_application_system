@@ -17,9 +17,11 @@
                     <tr>
                         <td><img src="{{ $post->featured }}" alt="{{$post->title}}" width="50px" height="50px"></td>
                         <td>{{ $post->title }}</td>
-                        <td> <a href="" class="btn  btn-info">Edit</a></td>
 
-                        <td> <a href="{{ route('post.delete',['id' => $post->id]) }}" class="btn  btn-success">Restore</a></td>
+                        <td> <a href="" class="btn  btn-success">Edit</a></td>
+                        <td> <a href="{{ route('posts.restore',['id' => $post->id]) }}" class="btn  btn-info">Restore</a></td>
+
+                        {{--<td> <a href="{{ route('post.delete',['id' => $post->id]) }}" class="btn  btn-success">Restore</a></td>--}}
                         <td> <a href="{{ route('posts.kill',   ['id' => $post->id]) }}" class="btn  btn-danger">Delete</a></td>
                     </tr>
                 @endforeach
