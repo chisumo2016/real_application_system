@@ -121,6 +121,12 @@
 
         toastr.success("{{ Session::get('success') }}")
         @endif
+
+       //Session for Setting Information on post before creating a post
+       @if(Session::has('info'))
+
+        toastr.info("{{ Session::get('info') }}")
+        @endif
     </script>
 </body>
 </html>
