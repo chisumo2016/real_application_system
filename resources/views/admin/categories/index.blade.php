@@ -3,6 +3,9 @@
 
 @section('content')
    <div class="panel panel-default">
+       <div class="panel-heading">
+           Categories
+       </div>
        <div class="panel-body">
            <table class="table table-hover">
                <thead>
@@ -11,6 +14,7 @@
                <th>Deleting</th>
                </thead>
                <tbody>
+               @if($categories->count() > 0 )
                @foreach($categories as $category)
                    <tr>
                        <td>{{ $category->name }}</td>
@@ -20,6 +24,11 @@
                    </tr>
                @endforeach
 
+               @else
+                   <tr>
+                       <th colspan="5" class="text-center">No  Categories yet .</th>
+                   </tr>
+                @endif
                </tbody>
            </table>
 

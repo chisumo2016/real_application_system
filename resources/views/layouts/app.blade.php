@@ -113,6 +113,16 @@
                                 <a href="{{ Route('category.create') }}">Create New Category</a>
                             </li>
 
+                            <li class="list-group-item">
+                                <a href="{{ Route('tags') }}">Tags</a>
+                            </li>
+
+
+                            <li class="list-group-item">
+                                <a href="{{ Route('tag.create') }}">Create Tags</a>
+                            </li>
+
+
 
 
                         </ul>
