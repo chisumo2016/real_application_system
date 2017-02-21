@@ -53,7 +53,8 @@ class UsersController extends Controller
         ]);
 
         $profile = Profile::create([
-            'user_id'  => $user->id
+            'user_id'  => $user->id,
+            'avatar'  =>'uploads/avatars/1.jpg'
         ]);
         Session::flash('success', 'User  added succesfully.');
 
@@ -107,5 +108,28 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function admin($id)
+    {
+        $user = User::find($id);
+        $user->admin =    1;
+        $user->save();
+
+        Session::flash('success', 'Successfully shanged user permission');
+
+        return redirect()->back();
+    }
+
+
+    public function not_admin($id)
+    {
+        $user = User::find($id);
+        $user->admin =   0;
+        $user->save();
+
+        Session::flash('success', 'Successfully shanged user permission');
+
+        return redirect()->back();
     }
 }
