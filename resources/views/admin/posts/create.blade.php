@@ -53,3 +53,23 @@
         </div>
     </div>
 @stop
+
+
+
+@section('styles')
+    <!-- include summernote css/js-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+@stop
+
+
+
+@section('scripts')
+    <!-- include summernote css/js-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#content').summernote();
+        });
+    </script>
+@stop

@@ -14,6 +14,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link  href="{{ asset('css/toastr.min.css') }}"  rel="stylesheet">
 
+    @yield('styles')
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -114,7 +116,7 @@
                             </li>
 
                             <li class="list-group-item">
-                                <a href="{{ Route('tags') }}">Tags</a>
+                                <a href="{{ Route('tags') }}">View Tags</a>
                             </li>
 
 
@@ -138,6 +140,12 @@
                                 <a href="{{ Route('user.profile') }}">My Profile</a>
                             </li>
 
+                             @if(Auth::user()->admin)
+
+                                <li class="list-group-item">
+                                    <a href="{{ Route('settings') }}">View Setting</a>
+                                </li>
+                             @endif
 
                         </ul>
                     </div>
@@ -166,5 +174,7 @@
         toastr.info("{{ Session::get('info') }}")
         @endif
     </script>
+
+  @yield('scripts')
 </body>
 </html>
