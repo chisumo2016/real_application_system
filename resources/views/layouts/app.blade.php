@@ -122,6 +122,15 @@
                                 <a href="{{ Route('tag.create') }}">Create Tags</a>
                             </li>
 
+                            <li class="list-group-item">
+                                <a href="{{ Route('users') }}">View Users</a>
+                            </li>
+
+                            <li class="list-group-item">
+                                <a href="{{ Route('user.create') }}">Create New Users</a>
+                            </li>
+
+
 
 
 
