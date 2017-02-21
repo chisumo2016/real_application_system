@@ -134,6 +134,11 @@
                             @endif
 
 
+                            <li class="list-group-item">
+                                <a href="{{ Route('user.profile') }}">My Profile</a>
+                            </li>
+
+
                         </ul>
                     </div>
                     @endif
