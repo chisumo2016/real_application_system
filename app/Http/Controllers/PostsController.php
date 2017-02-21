@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
+use App\Tag;
 use Session;
 class PostsController extends Controller
 {
@@ -34,7 +35,7 @@ class PostsController extends Controller
             return redirect()->back();
         }
         ///return view ('admin.posts.create')->with('categories', Category::all());
-        return view ('admin.posts.create')->with('categories',$categories);
+        return view ('admin.posts.create')->with('categories',$categories)->with('tags', Tag::all());
     }
 
     /**
@@ -53,7 +54,8 @@ class PostsController extends Controller
             'title'         =>  'required',
             'featured'      =>  'required|image',
             'content'       =>  'required',
-            'category_id'   =>  'required'
+            'category_id'   =>  'required',
+            'tags'          =>  'required'
         ]);
 
         //Store  post and image into the database
@@ -72,6 +74,10 @@ class PostsController extends Controller
             'category_id'   =>  $request->category_id,
             'slug'          => str_slug($request->title)
         ]);
+
+        //Many To Many Relationship
+
+        $post->tags()->attach($request->tags);
 
         Session::flash('success', 'Post created successfully');
 
@@ -98,6 +104,10 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
+        $post = Post::find($id);
+        return view('admin.posts.edit')->with('post', $post)
+                                       ->with('categories', Category::all())
+                                        ->with('tags', Tag::all());
     }
 
     /**
@@ -110,6 +120,39 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $this->validate($request, [
+            'title'       => 'required',
+            'content'     => 'required',
+            'category_id' => 'required',
+        ]);
+
+        $post = Post::find($id);
+
+        if($request->hasFile('featured')) {
+            $featured = $request->featured;
+
+            //Give a new name
+            $featured_new_name = time() . $featured->getClientOriginalName(); //Symphony name
+            //Moving the image into the folder and pass to the name of the file
+            $featured->move('uploads/posts', $featured_new_name);
+
+            $post->featured = 'uploads/posts/' . $featured_new_name;
+         }
+
+
+            $post->title = $request->title;
+            $post->content = $request->content;
+            $post->category_id = $request->category_id;
+
+            $post->save();
+
+             //Relationship btn tag and post
+            $post->tags()->sync($request->tags); // sync is an array
+
+            Session::flash('success', 'post updated Sucessfully');
+
+            return redirect()->route('posts');
     }
 
     /**

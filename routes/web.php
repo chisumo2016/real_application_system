@@ -41,6 +41,18 @@ Route::group(['prefix'=> 'admin','middleware' => 'auth'], function(){
        'as'    => 'posts'
    ]);
 
+
+    Route::get('/post/edit/{id}', [
+        'uses' => 'PostsController@edit',
+        'as'   => 'post.edit'
+    ]);
+
+
+    Route::post('post/update/{id}',[
+        'uses'  => 'PostsController@update',
+        'as'    => 'post.update'
+    ]);
+
     Route::get('/posts/trashed', [
         'uses'    =>  'PostsController@trashed',
         'as'    => 'posts.trashed'
@@ -128,10 +140,13 @@ Route::group(['prefix'=> 'admin','middleware' => 'auth'], function(){
     ]);
 
 
-
-
-
-
-
-
 });
+
+Route::get('/test', function(){
+   //dd(App\Category::find(1)->posts() );
+   //return App\Post::find(1)->category;
+  // return App\Tag::find(4)->posts;
+   return App\Post::find(1)->tags;
+});
+
+
