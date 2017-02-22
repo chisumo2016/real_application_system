@@ -43,7 +43,7 @@ class SettingsController extends Controller
 
 //        //Save setting into databse
             $settings->save();
-            
+
 //        //Set a Message from Session
 
         Session::flash('success', 'Settings Updated');
