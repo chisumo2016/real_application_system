@@ -3,7 +3,7 @@
         <div class="header-content-wrapper">
             <div class="logo">
                 <div class="logo-text">
-                    <div class="logo-title">LARAVEL'S BLOG</div>
+                    <div class="logo-title">{{ $title }}</div>
                 </div>
             </div>
 

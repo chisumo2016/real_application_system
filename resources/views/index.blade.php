@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Seosight - Index Page</title>
+    <title>{{ $title  }}</title>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/fonts.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/crumina-fonts.css') }}">
@@ -32,6 +32,8 @@
         }
         .text-center{
             text-align: center;
+
+
         }
     </style>
 
@@ -47,16 +49,17 @@
 
     <div class="header-spacer"></div>
 
+
+
     <div class="container">
         <div class="row">
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <article class="hentry post post-standard has-post-thumbnail sticky">
-
                     <div class="post-thumb">
-                        <img src="app/img/1.png" alt="seo">
+                        <img src="{{ $first_post->featured }}" alt="{{ $first_post->title }}">
                         <div class="overlay"></div>
-                        <a href="{{ asset('app/img/post1.jpg') }}" class="link-image js-zoom-image">
+                        <a href="{{ $first_post->featured }}" class="link-image js-zoom-image">
                             <i class="seoicon-zoom"></i>
                         </a>
                         <a href="#" class="link-post">
@@ -68,8 +71,8 @@
 
                         <div class="post__content-info">
 
-                            <h2 class="post__title entry-title ">
-                                <a href="15_blog_details.html">The Important & Standard Post Format</a>
+                            <h2 class="post__title entry-title text-center">
+                                <a href="#">{{ $first_post->title }}</a>
                             </h2>
 
                             <div class="post-additional-info">
@@ -79,19 +82,14 @@
                                             <i class="seoicon-clock"></i>
 
                                             <time class="published" datetime="2016-04-17 12:00:00">
-                                                April 17, 2016
+                                                {{ $first_post->created_at->toFormattedDateString() }}
                                             </time>
 
                                         </span>
 
                                 <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="#">Video</a>
-                                        </span>
-
-                                <span class="post__comments">
-                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
-                                            6
+                                            <a href="#">{{ $first_post->category->name }}</a>
                                         </span>
 
                             </div>
@@ -101,16 +99,16 @@
                 </article>
             </div>
             <div class="col-lg-2"></div>
-        </div>
+        </div>     {{-- End of First_Post --}}
 
         <div class="row">
             <div class="col-lg-6">
                 <article class="hentry post post-standard has-post-thumbnail sticky">
 
                     <div class="post-thumb">
-                        <img src="app/img/2.png" alt="seo">
+                        <img src="{{ $second_post->featured }}" alt="seo">
                         <div class="overlay"></div>
-                        <a href="{{ asset('app/img/2.png') }}" class="link-image js-zoom-image">
+                        <a href="{{ $second_post->featured }}" class="link-image js-zoom-image">
                             <i class="seoicon-zoom"></i>
                         </a>
                         <a href="#" class="link-post">
@@ -122,8 +120,8 @@
 
                         <div class="post__content-info">
 
-                            <h2 class="post__title entry-title ">
-                                <a href="15_blog_details.html">The Important & Standard Post Format</a>
+                            <h2 class="post__title entry-title text-center">
+                                <a href="15_blog_details.html">{{ $second_post->title }}</a>
                             </h2>
 
                             <div class="post-additional-info">
@@ -133,21 +131,15 @@
                                             <i class="seoicon-clock"></i>
 
                                             <time class="published" datetime="2016-04-17 12:00:00">
-                                                April 17, 2016
+                                                {{ $second_post->created_at->toFormattedDateString() }}
                                             </time>
 
                                         </span>
 
                                 <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="#">Video</a>
+                                            <a href="#">{{ $second_post->category->name }}</a>
                                         </span>
-
-                                <span class="post__comments">
-                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
-                                            6
-                                        </span>
-
                             </div>
                         </div>
                     </div>
@@ -158,9 +150,9 @@
                 <article class="hentry post post-standard has-post-thumbnail sticky">
 
                     <div class="post-thumb">
-                        <img src="{{ asset('app/img/3.jpg') }}" alt="seo">
+                        <img src="{{ $third_post->featured }}" alt="seo">
                         <div class="overlay"></div>
-                        <a href="{{ asset('app/img/3.jpg') }}" class="link-image js-zoom-image">
+                        <a href="{{ $third_post->featured }}" class="link-image js-zoom-image">
                             <i class="seoicon-zoom"></i>
                         </a>
                         <a href="#" class="link-post">
@@ -172,8 +164,8 @@
 
                         <div class="post__content-info">
 
-                            <h2 class="post__title entry-title ">
-                                <a href="15_blog_details.html">The Important & Standard Post Format</a>
+                            <h2 class="post__title entry-title text-center">
+                                <a href="#">{{ $third_post->title }}</a>
                             </h2>
 
                             <div class="post-additional-info">
@@ -183,14 +175,14 @@
                                             <i class="seoicon-clock"></i>
 
                                             <time class="published" datetime="2016-04-17 12:00:00">
-                                                April 17, 2016
+                                                {{ $third_post->created_at->toFormattedDateString() }}
                                             </time>
 
                                         </span>
 
                                 <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="#">Video</a>
+                                            <a href="#">{{ $third_post->category->name }}</a>
                                         </span>
 
                                 <span class="post__comments">
@@ -216,7 +208,7 @@
                         <div class="row">
                             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                                 <div class="heading">
-                                    <h4 class="h1 heading-title">Laravel 5.3</h4>
+                                    <h4 class="h1 heading-title">{{ $career->name }}</h4>
                                     <div class="heading-line">
                                         <span class="short-line"></span>
                                         <span class="long-line"></span>
@@ -226,41 +218,26 @@
                         </div>
                         <div class="row">
                             <div class="case-item-wrap">
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="{{ asset('app/img/3.jpg') }}" alt="our case">
+                                @foreach($career->posts()->orderBy('created_at', 'desc')->take(3)->get() as $post)
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="case-item">
+                                            <div class="case-item__thumb">
+                                                <img src="{{ $post->featured }}" alt="our case">
+                                            </div>
+                                            <h6 class="case-item__title text-center"><a href="#">{{ $post->title }}</a></h6>
                                         </div>
-                                        <h6 class="case-item__title"><a href="#">Investigationes demonstraverunt legere</a></h6>
                                     </div>
-                                </div>
-
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="{{ asset('app/img/1.png') }}" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title">Claritas est etiam processus dynamicus</h6>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
-                                            <img src="{{ asset('app/img/2.png') }}" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title">quod mazim placerat facer possim assum</h6>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
+
                     <div class="padded-50"></div>
                     <div class="offers">
                         <div class="row">
                             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                                 <div class="heading">
-                                    <h4 class="h1 heading-title">Laravel 5.3</h4>
+                                    <h4 class="h1 heading-title">{{ $tutorials->name }}</h4>
                                     <div class="heading-line">
                                         <span class="short-line"></span>
                                         <span class="long-line"></span>
@@ -270,76 +247,18 @@
                         </div>
                         <div class="row">
                             <div class="case-item-wrap">
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="{{ asset('app/img/2.png') }}" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title"><a href="#">Investigationes demonstraverunt legere</a></h6>
-                                    </div>
-                                </div>
 
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="{{ asset('app/img/3.jpg') }}" alt="our case">
+                                @foreach($tutorials->posts()->orderBy('created_at', 'desc')->take(3)->get() as $post)
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="case-item">
+                                            <div class="case-item__thumb">
+                                                <img src="{{ $post->featured }}" alt="our case">
+                                            </div>
+                                            <h6 class="case-item__title text-center"><a href="#">{{ $post->title }}</a></h6>
                                         </div>
-                                        <h6 class="text-center case-item__title">Claritas est etiam processus dynamicus</h6>
                                     </div>
-                                </div>
+                                @endforeach
 
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
-                                            <img src="{{ asset('app/img/4.jpg') }}" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title">quod mazim placerat facer possim assum</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="padded-50"></div>
-                    <div class="offers">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                                <div class="heading">
-                                    <h4 class="h1 heading-title">Laravel 5.3</h4>
-                                    <div class="heading-line">
-                                        <span class="short-line"></span>
-                                        <span class="long-line"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="case-item-wrap">
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="{{ asset('app/img/5.jpg') }}" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title"><a href="#">Investigationes demonstraverunt legere</a></h6>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb">
-                                            <img src="{{ asset('app/img/2.png') }}" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title">Claritas est etiam processus dynamicus</h6>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
-                                    <div class="case-item">
-                                        <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
-                                            <img src="{{ asset('app/img/6.jpg') }}" alt="our case">
-                                        </div>
-                                        <h6 class="case-item__title">quod mazim placerat facer possim assum</h6>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -348,39 +267,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Subscribe Form -->
-
-    <div class="container-fluid bg-green-color">
-        <div class="row">
-            <div class="container">
-                <div class="row">
-                    <div class="subscribe scrollme">
-                        <div class="col-lg-6 col-lg-offset-5 col-md-6 col-md-offset-5 col-sm-12 col-xs-12">
-                            <h4 class="subscribe-title">Email Newsletters!</h4>
-                            <form class="subscribe-form" method="post" action="">
-                                <input class="email input-standard-grey input-white" name="email" required="required" placeholder="Your Email Address" type="email">
-                                <button class="subscr-btn">subscribe
-                                    <span class="semicircle--right"></span>
-                                </button>
-                            </form>
-                            <div class="sub-title">Sign up for new Seosignt content, updates, surveys & offers.</div>
-
-                        </div>
-
-                        <div class="images-block">
-                            <img src="{{ asset('app/img/subscr-gear.png') }}" alt="gear" class="gear">
-                            <img src="{{ asset('app/img/subscr1.png') }}" alt="mail" class="mail">
-                            <img src="{{ asset('app/img/subscr-mailopen.png') }}" alt="mail" class="mail-2">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- End Subscribe Form -->
-</div>
 
 
 

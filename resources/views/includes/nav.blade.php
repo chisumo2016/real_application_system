@@ -9,20 +9,27 @@
                             </span>
     </a>
     <ul class="primary-menu-menu" style="overflow: hidden;">
-        <li class="">
-            <a href="">NEWS</a>
-        </li>
-        <li class="">
-            <a href="">VIDEOS</a>
-        </li>
-        <li class="">
-            <a href="">DISCUSSIONS</a>
-        </li>
-        <li class="">
-            <a href="">TUTORIALS</a>
-        </li>
-        <li class="">
-            <a href="">NEWSLETTER</a>
-        </li>
+        @foreach($categories as $category)
+            <li class="">
+                <a href="">{{ $category->name }}</a>
+            </li>
+        @endforeach
+
+
+
+
+        {{--<li class="">--}}
+            {{--<a href="">VIDEOS</a>--}}
+        {{--</li>--}}
+        {{--<li class="">--}}
+            {{--<a href="">DISCUSSIONS</a>--}}
+        {{--</li>--}}
+        {{--<li class="">--}}
+            {{--<a href="">TUTORIALS</a>--}}
+        {{--</li>--}}
+        {{--<li class="">--}}
+            {{--<a href="">NEWSLETTER</a>--}}
+        {{--</li>--}}
     </ul>
 </nav>
+

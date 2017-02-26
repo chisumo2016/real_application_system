@@ -108,9 +108,10 @@ class PostsController extends Controller
     {
         //
         $post = Post::find($id);
+        //dd($post);
         return view('admin.posts.edit')->with('post', $post)
-                                       ->with('categories', Category::all())
-                                        ->with('tags', Tag::all());
+            ->with('categories', Category::all())
+            ->with('tags', Tag::all());
     }
 
     /**

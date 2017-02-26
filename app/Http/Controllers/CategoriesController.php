@@ -14,9 +14,9 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
-        return view ('admin.categories.index', compact('categories'));
-        //return view ('admin.categories.index')->with('catgories', Category::all());
+        //$categories = Category::all();
+        //return view ('admin.categories.index', compact('categories'));
+        return view ('admin.categories.index')->with('categories', Category::all());
     }
 
     /**
@@ -50,7 +50,7 @@ class CategoriesController extends Controller
 
         // Flash Message
         Session::flash('success', 'You successfully created category');
-        return redirect()->back();
+        return redirect()->route('categories');
         //dd($request->all());
     }
 

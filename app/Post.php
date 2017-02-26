@@ -17,15 +17,22 @@ class Post extends Model
 
     protected $dates = ['deleted_at'];
 
-   public  function  Categories()
+   public  function  category()
    {
        return $this->belongsTo('App\Category');
    }
 
+   // tags , posts === tag, post === post_tag
    public function tags()
    {
        return $this->belongsToMany('App\Tag');
    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+
+    }
 
    //Accessors for image
 
@@ -33,5 +40,7 @@ class Post extends Model
     {
         return asset($featured);   // Will generate a link for accesors
     }
+
+
 
 }

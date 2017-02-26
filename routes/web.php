@@ -11,9 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [
+    'uses'  => 'FrontEndController@index',
+    'as'    => 'index'
+
+]);
+
+
+
 
 Auth::routes();
 
@@ -42,11 +48,10 @@ Route::group(['prefix'=> 'admin','middleware' => 'auth'], function(){
    ]);
 
 
-    Route::get('/post/edit/{id}', [
+    Route::get('/posts/edit/{id}', [
         'uses' => 'PostsController@edit',
         'as'   => 'post.edit'
     ]);
-
 
     Route::post('post/update/{id}',[
         'uses'  => 'PostsController@update',
@@ -195,14 +200,17 @@ Route::group(['prefix'=> 'admin','middleware' => 'auth'], function(){
   ]);
 
 });
+//
+//Route::get('/test', function(){
+//   //dd(App\Category::find(1)->posts() );
+//   //return App\Post::find(1)->category;
+//  // return App\Tag::find(4)->posts;
+//   //return App\Post::find(1)->tags;
+//   //return App\User::find(1)->profile;
+//   return App\Profile::find(1)->user;
+//});
 
-Route::get('/test', function(){
-   //dd(App\Category::find(1)->posts() );
-   //return App\Post::find(1)->category;
-  // return App\Tag::find(4)->posts;
-   //return App\Post::find(1)->tags;
-   //return App\User::find(1)->profile;
-   return App\Profile::find(1)->user;
-});
 
-
+//Route::get('/', function () {
+//    return view('welcome');
+//});
