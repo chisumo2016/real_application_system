@@ -18,6 +18,16 @@ Route::get('/', [
 
 ]);
 
+Route::get('/{slug}', [
+    'uses'  => 'FrontEndController@singlePost',
+    'as'    => 'post.single'
+]);
+
+Route::get('/post/{slug}', [
+    'uses' =>'FrontEndController@singlePost',
+    'as'   => 'post.single'
+]);
+
 
 
 
