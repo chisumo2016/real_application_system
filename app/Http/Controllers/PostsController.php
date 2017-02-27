@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
@@ -38,7 +39,8 @@ class PostsController extends Controller
             return redirect()->back();
         }
         ///return view ('admin.posts.create')->with('categories', Category::all());
-        return view ('admin.posts.create')->with('categories',$categories)->with('tags', $tags);
+        return view('admin.posts.create')->with('categories', $categories)
+            ->with('tags', $tags);
     }
 
     /**
@@ -75,7 +77,8 @@ class PostsController extends Controller
             'content'       =>  $request->content,
             'featured'      =>  'uploads/posts/' . $featured_new_name,
             'category_id'   =>  $request->category_id,
-            'slug'          => str_slug($request->title)
+            'slug'          => str_slug($request->title),
+            'user_id'       => Auth::id(),
         ]);
 
         //Many To Many Relationship

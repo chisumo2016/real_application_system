@@ -58,12 +58,14 @@
                     <div class="subscribe scrollme">
                         <div class="col-lg-6 col-lg-offset-5 col-md-6 col-md-offset-5 col-sm-12 col-xs-12">
                             <h4 class="subscribe-title">Email Newsletters!</h4>
+
                             <form class="subscribe-form" method="post" action="">
                                 <input class="email input-standard-grey input-white" name="email" required="required" placeholder="Your Email Address" type="email">
                                 <button class="subscr-btn">subscribe
                                     <span class="semicircle--right"></span>
                                 </button>
                             </form>
+
                             <div class="sub-title">Sign up for new Seosignt content, updates, surveys & offers.</div>
 
                         </div>
@@ -127,22 +129,7 @@
 
 <!-- Overlay Search -->
 
-<div class="overlay_search">
-    <div class="container">
-        <div class="row">
-            <div class="form_search-wrap">
-                <form>
-                    <input class="overlay_search-input" placeholder="Type and hit Enter..." type="text">
-                    <a href="#" class="overlay_search-close">
-                        <span></span>
-                        <span></span>
-                    </a>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
+@include('includes.search')
 <!-- End Overlay Search -->
 
 <!-- JS Script -->

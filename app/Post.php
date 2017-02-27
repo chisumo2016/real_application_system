@@ -12,7 +12,7 @@ class Post extends Model
     // The attributes that are mass assignable
 
     protected $fillable = [
-        'title', 'content', 'featured', 'category_id','slug'
+        'title', 'content', 'featured', 'category_id','slug','user_id'
     ];
 
     protected $dates = ['deleted_at'];
