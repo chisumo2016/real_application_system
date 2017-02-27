@@ -75,8 +75,8 @@ class ProfilesController extends Controller
         $this->validate($request ,[
             'name'       =>     'required',
             'email'      =>     'required|email',
-            'facebook'   =>     'required|url',
-            'youtube'    =>      'required|url'
+            'facebook'   =>      'required|url',
+            'youtube'    =>       'required|url'
         ]);
 
         //Get the user
@@ -98,11 +98,11 @@ class ProfilesController extends Controller
         }
 
      //Save other field in the database
-        $user->name  = $request->name;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->profile->facebook = $request->facebook;
-        $user->profile->youtube  =  $request->youtube;
-        $user->profile->about->$request->about;
+        $user->profile->youtube = $request->youtube;
+        $user->profile->about = $request->about;
 
         $user->save();
         $user->profile->save;  // user profile table

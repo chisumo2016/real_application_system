@@ -18,10 +18,10 @@ Route::get('/', [
 
 ]);
 
-Route::get('/{slug}', [
-    'uses'  => 'FrontEndController@singlePost',
-    'as'    => 'post.single'
-]);
+//Route::get('/{slug}', [
+//    'uses'  => 'FrontEndController@singlePost',
+//    'as'    => 'post.single'
+//]);
 
 Route::get('/post/{slug}', [
     'uses' =>'FrontEndController@singlePost',
@@ -44,7 +44,7 @@ Route::get('/results', function(){
     return view('results')->with('posts', $posts)
         ->with('title', 'Search results:' . request('query'))
         ->with('setting',    \App\Setting::first())
-        ->with('categories', \APP\Category::take(5)->get())
+        ->with('categories', \App\Category::take(5)->get())
         ->with('query', request('query'));
 
 

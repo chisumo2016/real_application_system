@@ -36,8 +36,12 @@ class FrontEndController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
         //Pagination
+
+
         $next_id = Post::where('id', '>',  $post->id)->min('id');
         $prev_id = Post::where('id' , '<', $post->id)->max('id');
+
+
         return view('single')->with('post', $post)
                              ->with('title',$post->title)
                              ->with('setting',     Setting::first())

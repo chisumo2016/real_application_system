@@ -4,7 +4,7 @@
 @section('content')
     <div class="panel panel-default">
         <div class="default-heading">
-            Published Post
+            Published Posts
         </div>
         <div class="panel-body">
             <table class="table table-hover">

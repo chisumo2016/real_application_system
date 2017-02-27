@@ -17,8 +17,9 @@ class PostsController extends Controller
      */
     public function index()
     {
+        $posts = Post::all();
         //Display Post in the View
-        return view('admin.posts.index')->with('posts', Post::all());
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -39,8 +40,7 @@ class PostsController extends Controller
             return redirect()->back();
         }
         ///return view ('admin.posts.create')->with('categories', Category::all());
-        return view('admin.posts.create')->with('categories', $categories)
-            ->with('tags', $tags);
+        return view('admin.posts.create', compact('tags', 'categories'));
     }
 
     /**
@@ -72,13 +72,13 @@ class PostsController extends Controller
         $featured->move('uploads/posts',$featured_new_name );
 
         // Taking care for other fields
-        $post = Post::Create([
+        $post = Post::create([
             'title'         =>  $request->title,
             'content'       =>  $request->content,
             'featured'      =>  'uploads/posts/' . $featured_new_name,
             'category_id'   =>  $request->category_id,
             'slug'          => str_slug($request->title),
-            'user_id'       => Auth::id(),
+            'user_id'       => Auth::id()
         ]);
 
         //Many To Many Relationship
@@ -111,10 +111,10 @@ class PostsController extends Controller
     {
         //
         $post = Post::find($id);
+        $categories = Category::all();
+        $tags = Tag::all();
         //dd($post);
-        return view('admin.posts.edit')->with('post', $post)
-            ->with('categories', Category::all())
-            ->with('tags', Tag::all());
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
