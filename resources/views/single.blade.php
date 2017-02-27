@@ -48,7 +48,7 @@
 
                                 <span class="category">
                                 <i class="seoicon-tags"></i>
-                                <a href="#">{{ $post->category->name }}</a>
+                                <a href="{{ route('category.single', ['id' => '$post->category->id']) }}">{{ $post->category->name }}</a>
 
                             </span>
 
@@ -128,7 +128,7 @@
                     <div class="pagination-arrow">
 
                       @if($prev)
-                              <a href="{{ route('post.single',['slug'=>$prev->slug]) }}" class="btn-next-wrap">
+                              <a href="{{ route('post.single',['slug'=> $prev->slug]) }}" class="btn-next-wrap">
                                   <div class="btn-content">
                                       <div class="btn-content-title">Next Post</div>
                                       <p class="btn-content-subtitle">{{ $prev->title }}</p>
@@ -193,7 +193,7 @@
 
                             <div class="tags-wrap">
                                @foreach($tags as $tag)
-                                    <a href="#" class="w-tags-item">{{ $tag->tag }}</a>
+                                    <a href="{{ route('tag.single', ['id' => $tag->id]) }}" class="w-tags-item">{{ $tag->tag }}</a>
                                @endforeach
 
                             </div>
