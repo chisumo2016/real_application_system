@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/grid.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/styles.css') }}">
 
+    <link  href="{{ asset('css/toastr.min.css') }}"  rel="stylesheet">
+
 
     <!--Plugins styles-->
 
@@ -347,21 +349,7 @@
 
 <!-- Overlay Search -->
 
-<div class="overlay_search">
-    <div class="container">
-        <div class="row">
-            <div class="form_search-wrap">
-                <form>
-                    <input class="overlay_search-input" placeholder="Type and hit Enter..." type="text">
-                    <a href="#" class="overlay_search-close">
-                        <span></span>
-                        <span></span>
-                    </a>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+@include('includes.search')
 
 <!-- End Overlay Search -->
 
@@ -378,7 +366,15 @@
 <script src="{{ asset('app/js/ScrollMagic.min.js') }}"></script>
 <script src="{{ asset('app/js/animation.velocity.min.js') }}"></script>
 
+<script src="{{ asset('js/toastr.min.js') }}"></script>
 
+<script>
+    @if(Session::has('subscribed'))
+
+    toastr.success("{{ Session::get('subscribed') }}")
+    @endif
+
+</script>
 <!-- ...end JS Script -->
 
 </body>
