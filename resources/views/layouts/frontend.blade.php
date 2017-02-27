@@ -12,6 +12,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/styles.css') }}">
 
 
+
+    <link  href="{{ asset('css/toastr.min.css') }}"  rel="stylesheet">
+
+
     <!--Plugins styles-->
 
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/jquery.mCustomScrollbar.min.css') }}">
@@ -59,9 +63,10 @@
                         <div class="col-lg-6 col-lg-offset-5 col-md-6 col-md-offset-5 col-sm-12 col-xs-12">
                             <h4 class="subscribe-title">Email Newsletters!</h4>
 
-                            <form class="subscribe-form" method="post" action="">
+                            <form class="subscribe-form" method="post" action="/subscribe">
+                                {{ csrf_field() }}
                                 <input class="email input-standard-grey input-white" name="email" required="required" placeholder="Your Email Address" type="email">
-                                <button class="subscr-btn">subscribe
+                                <button class="subscr-btn" type="submit">subscribe
                                     <span class="semicircle--right"></span>
                                 </button>
                             </form>
@@ -147,6 +152,16 @@
 
 
 <!-- ...end JS Script -->
+
+
+<script src="{{ asset('js/toastr.min.js') }}"></script>
+<script>
+    @if(Session::has('subscribed'))
+
+    toastr.success("{{ Session::get('subscribed') }}")
+    @endif
+
+</script>
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58b4293072bffd96"></script>
